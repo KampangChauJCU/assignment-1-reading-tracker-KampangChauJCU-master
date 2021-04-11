@@ -16,7 +16,9 @@ Q - Quit
 
 def main():
     """..."""
-    print("Reading Tracker 1.0 - by Your Name")
+    print("Reading Tracker 1.0 - by Jinpeng Zhou")
+    print("4 books loaded")
+    print(MENU)
 
 
 if __name__ == '__main__':
