@@ -36,7 +36,15 @@ def main():
     print(len(all_books), "books saved to", 'books.csv', "\nSo many books, so little time. Frank Zappa")
 
 
-
+def load_books():
+    all_books = []
+    books_file = open('books.csv', 'r')
+    for line in books_file:
+        line = line.strip("\n")
+        book_author_pages_list = line.split(",")
+        all_books.append(book_author_pages_list)
+    books_file.close()
+    return all_books
 
 if __name__ == '__main__':
     main()
