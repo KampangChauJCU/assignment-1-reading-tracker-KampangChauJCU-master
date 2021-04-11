@@ -27,7 +27,7 @@ def main():
         elif choice == "A":
             all_books.append(add_books())
         elif choice == "W":
-            see_books(all_books)
+            read_books(all_books)
         else:
             print("Invalid menu choice")
         print(MENU)
@@ -45,6 +45,29 @@ def load_books():
         all_books.append(book_author_pages_list)
     books_file.close()
     return all_books
+
+
+def list_books(all_books):
+    count = 0
+    for i in range(len(all_books)):
+        if all_books[i][3] == "w":
+            count += 1
+            symbol = " "
+            print(" ", str(i) + ".", symbol, "", end="")
+        else:
+            symbol = "*"
+            print(" ", str(i) + ".", symbol, "", end="")
+        for j in range(len(all_books[i]) - 2):
+            if j == 1:
+                dash = "-"
+            else:
+                dash = ""
+            print(dash, "{:30}".format(all_books[i][j]), end=" ")
+        print("({:4})".format(all_books[i][-2]))
+    print("You need to read", len(all_books) - count, "pages in", count, "books.")
+
+
+
 
 if __name__ == '__main__':
     main()
