@@ -19,6 +19,23 @@ def main():
     print("Reading Tracker 1.0 - by Jinpeng Zhou")
     print("4 books loaded")
     print(MENU)
+    choice = input(">>> ").upper()
+    all_books = load_books()
+    while choice != "Q":
+        if choice == "L":
+            list_books(all_books)
+        elif choice == "A":
+            all_books.append(add_books())
+        elif choice == "W":
+            see_books(all_books)
+        else:
+            print("Invalid menu choice")
+        print(MENU)
+        choice = input(">>> ").upper()
+    save_to_file(all_books)
+    print(len(all_books), "books saved to", 'books.csv', "\nSo many books, so little time. Frank Zappa")
+
+
 
 
 if __name__ == '__main__':
