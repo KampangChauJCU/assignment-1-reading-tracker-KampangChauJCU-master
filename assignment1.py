@@ -64,7 +64,38 @@ def list_books(all_books):
                 dash = ""
             print(dash, "{:30}".format(all_books[i][j]), end=" ")
         print("({:4})".format(all_books[i][-2]))
-    print("You need to read", len(all_books) - count, "pages in", count, "books.")
+
+
+def read_books(all_books):
+    count = 0
+    for i in range(len(all_books)):
+        if all_books[i][3] == "w":
+            count += 1
+            symbol = " "
+        else:
+            symbol = "*"
+        print(" ", str(i) + ".", symbol, "", end="")
+        for j in range(len(all_books[i]) - 2):
+            if j == 1:
+                dash = "-"
+            else:
+                dash = ""
+            print(dash, "{:30}".format(all_books[i][j]), end=" ")
+        print("({:4})".format(all_books[i][-2]))
+    if count == 0:
+        print("No books left to read. Why not add a new book?")
+
+    print("You need to read ", count, "pages in",len(all_books) - count, "books.")
+    book_number = count_number("Enter the number of a book to mark as completed\n>>> ")
+
+    if all_books[book_number][3] == "u":
+
+        print(all_books[book_number][0], " completed!")
+    else:
+        all_books[book_number][3] = "u"
+        print(all_books[book_number][0], "from", all_books[book_number][1], "completed")
+
+        return all_books
 
 
 
