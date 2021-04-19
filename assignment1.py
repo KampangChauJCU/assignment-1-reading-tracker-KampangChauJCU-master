@@ -98,6 +98,20 @@ def read_books(all_books):
         return all_books
 
 
+def count_number(choice):
+    valid = False
+    while not valid:
+        try:
+            input_number = int(input(choice))
+            if input_number < 0:
+                print("Number must be > 0")
+            elif input_number >= 7:
+                print("Invalid book number")
+            else:
+                return input_number
+        except ValueError:
+            print("Invalid input; enter a valid number")
+
 
 
 if __name__ == '__main__':
