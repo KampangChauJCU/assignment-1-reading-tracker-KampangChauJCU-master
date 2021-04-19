@@ -113,6 +113,18 @@ def count_number(choice):
             print("Invalid input; enter a valid number")
 
 
+def add_books():
+    new_book = []
+    book_title = word_input("Title: ")
+    page = str(count_number_page("Page: "))
+    author = word_input("Author: ")
+    new_book.append(page)
+    new_book.append(author)
+    new_book.append("w")
+    print(book_title,"by", author, ",", "(", "{:4}".format(page), ")", "added to Reading Tracker")
+    return new_book
+
+
 
 if __name__ == '__main__':
     main()
