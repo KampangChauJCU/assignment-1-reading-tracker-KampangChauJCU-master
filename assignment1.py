@@ -125,6 +125,14 @@ def add_books():
     return new_book
 
 
+def word_input(choice):
+    input_string = input(choice)
+    while len(input_string) == 0:
+        print("Input can not be blank")
+        input_string = input(choice)
+    return input_string.title()
+
+
 
 if __name__ == '__main__':
     main()
