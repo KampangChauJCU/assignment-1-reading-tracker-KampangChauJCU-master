@@ -133,6 +133,19 @@ def word_input(choice):
     return input_string.title()
 
 
+def count_number_page(choice):
+    valid = False
+    while not valid:
+        try:
+            input_number = int(input(choice))
+            if input_number < 0:
+                print("Number must be > 0")
+            else:
+                return input_number
+        except ValueError:
+            print("Invalid input；enter a valid number")
+
+
 
 if __name__ == '__main__':
     main()
