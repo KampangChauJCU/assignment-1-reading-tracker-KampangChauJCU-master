@@ -9,13 +9,12 @@ GitHub URL:https://github.com/JCUS-CP1404/assignment-1-reading-tracker-KampangCh
 MENU = """Menu:
 L - List all books
 A - Add new book
-W - Mark a book as completed
+M - Mark a book as completed
 Q - Quit
 """
 
 
 def main():
-    """..."""
     print("Reading Tracker 1.0 - by Jinpeng Zhou")
     print("4 books loaded")
     print(MENU)
@@ -26,7 +25,7 @@ def main():
             list_books(all_books)
         elif choice == "A":
             all_books.append(add_books())
-        elif choice == "W":
+        elif choice == "M":
             read_books(all_books)
         else:
             print("Invalid menu choice")
@@ -85,7 +84,7 @@ def read_books(all_books):
     if count == 0:
         print("No books left to read. Why not add a new book?")
 
-    print("You need to read ", count, "pages in",len(all_books) - count, "books.")
+    print("You need to read ", count, "pages in", len(all_books) - count, "books.")
     book_number = count_number("Enter the number of a book to mark as completed\n>>> ")
 
     if all_books[book_number][3] == "u":
@@ -121,7 +120,7 @@ def add_books():
     new_book.append(page)
     new_book.append(author)
     new_book.append("w")
-    print(book_title,"by", author, ",", "(", "{:4}".format(page), ")", "added to Reading Tracker")
+    print(book_title, "by", author, ",", "(", "{:4}".format(page), ")", "added to Reading Tracker")
     return new_book
 
 
@@ -145,6 +144,17 @@ def count_number_page(choice):
         except ValueError:
             print("Invalid input；enter a valid number")
 
+
+def save_to_file(all_books):
+    final_save = open("books.csv", 'w')
+    for i in range(len(all_books)):
+        if i != 0:
+            print("\n", end="", file=final_save)
+        for j in range(len(all_books[i])):
+            final_save.write(all_books[i][j])
+            if j != 3:
+                print(",", end="", file=final_save)
+    final_save.close()
 
 
 if __name__ == '__main__':
